@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Excel-Analysis-App/static/css/main.4cdc5f5d.chunk.css",
+    "main.js": "/Excel-Analysis-App/static/js/main.eeb0f43f.chunk.js",
+    "main.js.map": "/Excel-Analysis-App/static/js/main.eeb0f43f.chunk.js.map",
+    "runtime-main.js": "/Excel-Analysis-App/static/js/runtime-main.a7d09b58.js",
+    "runtime-main.js.map": "/Excel-Analysis-App/static/js/runtime-main.a7d09b58.js.map",
+    "static/js/2.40ded4ea.chunk.js": "/Excel-Analysis-App/static/js/2.40ded4ea.chunk.js",
+    "static/js/2.40ded4ea.chunk.js.map": "/Excel-Analysis-App/static/js/2.40ded4ea.chunk.js.map",
+    "static/js/3.84045fbf.chunk.js": "/Excel-Analysis-App/static/js/3.84045fbf.chunk.js",
+    "static/js/3.84045fbf.chunk.js.map": "/Excel-Analysis-App/static/js/3.84045fbf.chunk.js.map",
+    "index.html": "/Excel-Analysis-App/index.html",
+    "static/css/main.4cdc5f5d.chunk.css.map": "/Excel-Analysis-App/static/css/main.4cdc5f5d.chunk.css.map",
+    "static/js/2.40ded4ea.chunk.js.LICENSE.txt": "/Excel-Analysis-App/static/js/2.40ded4ea.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/Excel-Analysis-App/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a7d09b58.js",
+    "static/js/2.40ded4ea.chunk.js",
+    "static/css/main.4cdc5f5d.chunk.css",
+    "static/js/main.eeb0f43f.chunk.js"
+  ]
+}
