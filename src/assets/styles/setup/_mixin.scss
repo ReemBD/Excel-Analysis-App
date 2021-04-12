@@ -1,0 +1,39 @@
+@mixin hover-bgc-transition {
+    &:hover {
+        color: #fff;
+        background-color: $clr3;
+    }
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    overflow: hidden;
+    &::before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    > img {
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@mixin popover-header {
+    text-align: center;
+    font-family: "Open Sans Bold";
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+}

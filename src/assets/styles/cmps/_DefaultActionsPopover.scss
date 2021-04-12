@@ -1,0 +1,46 @@
+.default-actions-popover-container {
+    .default-actions-popover {
+        cursor: initial;
+        background-color: #fff;
+        position: absolute;
+        z-index: 10;
+        width: 250px;
+        height: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 4px #494949;
+        overflow-x: hidden;
+
+        &-header {
+            @include popover-header;
+        }
+
+        &-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: start;
+            margin-top: 10px;
+            & > * {
+                padding: 10px 8px;
+                cursor: pointer;
+                &:hover {
+                    color: darken($clr2, 20);
+                    background-color: #fbeacd;
+                }
+                &::after {
+                    content: "...";
+                }
+            }
+        }
+    }
+    .btn-actions {
+        position: absolute;
+        top: 10px;
+        right: 5px;
+        font-size: 1.6rem;
+        padding: 0.25rem;
+        border-radius: 50px;
+        &:hover {
+            background-color: $clr1;
+        }
+    }
+}

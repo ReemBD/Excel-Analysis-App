@@ -1,0 +1,23 @@
+@import "../setup/variables";
+.app-header-container {
+    background-color: $clr1;
+    position: fixed;
+    width: 100%;
+    .logo {
+        font-size: 2.5em;
+        text-transform: uppercase;
+    }
+    .nav-link {
+        text-decoration: none;
+        font-size: 1em;
+        text-transform: uppercase;
+        color: $clr2;
+
+        &:not(:last-child) {
+            margin-inline-end: 20px;
+        }
+    }
+    & + * {
+        padding-top: 100px;
+    }
+}

@@ -1,0 +1,9 @@
+.btn-action {
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 0.25rem;
+    &:hover {
+        background-color: $clr1;
+        color: #212121;
+    }
+}

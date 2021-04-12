@@ -1,0 +1,26 @@
+@import "../setup/variables";
+
+.excel-preview {
+    border: 1px solid $clr3;
+    min-height: 200px;
+    min-width: 160px;
+    color: $clr3;
+    position: relative;
+
+    & .title {
+        font-weight: 500;
+        transition: background-color 0.22s;
+    }
+
+    &:hover .title {
+        color: #fff;
+        background-color: $clr3;
+    }
+    .btn-actions {
+        display: none;
+    }
+
+    &:hover .btn-actions {
+        display: inline;
+    }
+}

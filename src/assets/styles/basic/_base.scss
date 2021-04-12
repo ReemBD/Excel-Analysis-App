@@ -1,0 +1,36 @@
+@import "../setup/variables";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/* DEFAULT ELEMENTS */
+.default {
+    &-input {
+        border: none;
+        border-bottom: 1px solid $clr3;
+        outline: none;
+
+        background-color: inherit;
+    }
+}
