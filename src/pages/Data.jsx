@@ -1,11 +1,13 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState, useRef } from 'react'
 import { excelDataService } from 'services/excelDataService'
-import { utilService } from 'services/utilService'
 import { store } from 'store/store'
 import { ResList } from 'cmps/Data/ResList'
-import { ResListItem } from 'cmps/Data/ResListItem'
 import { DataFilter } from 'cmps/Data/DataFilter'
-// import { DataCorrelation } from 'cmps/Data/DataCorrelation'
+import { useTogglePopover } from 'hooks/useTogglePopover';
+import { DataCorrModal } from 'cmps/Data/DataCorrModal';
+import BtnOpenCorr from 'cmps/Data/BtnAction';
+import { BsClipboardData } from 'react-icons/bs'
+
 export const Data = () => {
 
     const { state, dispatch } = useContext(store)
@@ -13,6 +15,9 @@ export const Data = () => {
     const [filterBy, setFilterBy] = useState({ column: '', txt: '' })
     const [filteredRes, setFilteredRes] = useState(null)
     const [resSliceIdx, setSliceIdx] = useState(0)
+    const [isDataCorrOpen, toggleDataCorr, ref] = useTogglePopover()
+
+    const dataCorrModalEl = useRef()
 
     const onScrollEnd = useCallback(({ target: { scrollTop, offsetHeight, scrollHeight } }) => {
         if (scrollTop + offsetHeight >= scrollHeight) {
@@ -26,7 +31,7 @@ export const Data = () => {
             excelsToSet = [...excelDataService.query()]
             dispatch({ type: 'SET_EXCELS', excels: excelsToSet })
         }
-        excelDataService.createRowsByColMap(excelsToSet)
+        excelDataService.createCellsByColMap(excelsToSet)
     }, [])
 
     useEffect(() => {
@@ -51,11 +56,12 @@ export const Data = () => {
 
     return (
         <div className="data-page main-layout grid content-center justify-items-center">
+
             <DataFilter
-                excels={excels}
                 filterBy={filterBy}
                 handleChange={handleChange}
             />
+
             <section
                 className="search-results flex flex-col data-grid-layout">
                 {filteredRes && <ResList
@@ -63,6 +69,23 @@ export const Data = () => {
                     onScrollEnd={onScrollEnd}
                 />}
             </section>
+
+            <div className="data-corr">
+                <BtnOpenCorr
+                    icon={BsClipboardData}
+                    size={50}
+                    title='Correlate Data'
+                    className={"btn-open-data-corr"}
+                    onClick={(ev) => {
+                        ev.stopPropagation()
+                        toggleDataCorr(!isDataCorrOpen)
+                    }}
+                />
+                <DataCorrModal
+                    isOpen={isDataCorrOpen}
+                    ref={ref}
+                />
+            </div>
 
         </div >
     )

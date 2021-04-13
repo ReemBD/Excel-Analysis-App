@@ -6,7 +6,9 @@ export const excelDataService = {
     add,
     getById,
     getFilteredCells,
-    createRowsByColMap,
+    getColCells,
+    getAllCols,
+    createCellsByColMap,
     getHeaderCells
 }
 
@@ -54,42 +56,47 @@ function getFilteredCells({ column, txt }, sliceIdx = 0) {
     return keySlice
 }
 
-function createRowsByColMap(excels) {
+function createCellsByColMap(excels) {
     const { cellsByColMap } = state
     let excelsData = excels || query()
-    let doesExistMap = {}
+    let doesExistMap = {} //an alternative for new Set, since the items are objects.
 
-    excelsData.forEach(excel => {
-        excel.sheets.forEach(sheet => {
+    for (const excel of excelsData) {
+        const { sheets } = excel
+
+        for (const sheet of sheets) {
+            const { rows } = sheet
             const headerCells = getHeaderCells(sheet.rows[0])
-            sheet.rows.forEach(row => {
+
+            for (const row of rows) {
                 const rowVals = Object.values(row)
+
                 for (let i = 0; i < rowVals.length; i++) {
+
                     const currCell = { txt: rowVals[i] }
-                    const currKey = cellsByColMap[headerCells[i]]
-                    if (!doesExistMap[currCell.txt] && currKey) {
-                        cellsByColMap[headerCells[i]].push(currCell)
-                        doesExistMap[currCell.txt] = true
-                    } else if (!currKey) {
-                        cellsByColMap[headerCells[i]] = [currCell]
-                        doesExistMap[currCell.txt] = true
+                    const currColKey = headerCells[i]
+                    const currColCells = cellsByColMap[currColKey]
+
+                    if (!doesExistMap[currColKey]) doesExistMap[currColKey] = {}
+                    if (!doesExistMap[currColKey][currCell.txt] && currColCells) {
+                        cellsByColMap[currColKey].push(currCell)
+                        if (!doesExistMap[currColKey]) doesExistMap[currColKey] = {}
+                    } else if (!currColCells) {
+                        cellsByColMap[currColKey] = [currCell]
                     }
+
                 }
-                // for (const col in row) {
-                //     const currCell = { txt: row[col] }
-                //     const currKey = regex.test(col) ? cellsByColMap[row[0]] : cellsByColMap[col]
-                //     if (currKey && !doesExistMap[currCell.txt]) {
-                //         doesExistMap[currCell.txt] = true
-                //         cellsByColMap[col].push(currCell)
-                //     }
-                //     else if (!currKey) {
-                //         cellsByColMap[col] = [currCell]
-                //         doesExistMap[currCell.txt] = true
-                //     }
-                // }
-            })
-        })
-    })
+            }
+        }
+    }
+}
+
+function getColCells(col) {
+    return state.cellsByColMap[col]
+}
+
+function getAllCols() {
+    return Object.keys(state.cellsByColMap)
 }
 
 function getHeaderCells(firstRow) {

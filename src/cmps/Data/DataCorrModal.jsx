@@ -1,29 +1,43 @@
+import { ColSelect } from 'cmps/shared/ColSelect'
 import React, { useState } from 'react'
 
-const DEFAULT_STATE = {
-    txt: ''
+
+const DEFAULT_SEARCH_STATE = {
+    txt: '',
+    colToSearchIn: ''
 }
 
+/* forwardRef is used in order to pass the onClickOutside ref (see useTogglePopover). */
 export const DataCorrModal = React.forwardRef(({ isOpen }, ref) => {
 
-    const [param, setParam] = useState(DEFAULT_STATE)
+    const [search, setSearch] = useState(DEFAULT_SEARCH_STATE)
 
     function handleChange({ target: { name, value } }) {
-        setParam({ ...param, [name]: value })
+        setSearch({ ...search, [name]: value })
     }
 
     return (
         <div ref={ref}
             className={`data-corr-modal ${isOpen && 'open'}`}
         >
+            <h1 className="title">
+                Data Correlation
+            </h1>
+
             <input
+                className="txt default-input"
                 type="text"
-                className="default-input"
-                value={param.txt}
+                name="txt"
+                value={search.txt}
                 onChange={handleChange}
             />
-            <h3>Hello from data corr modal</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Pariatur dolorem veniam cupiditate labore at hic officia veritatis, placeat corporis totam!</p>
+
+            <ColSelect
+                name="colToSearchIn"
+                value={search.colToSearchIn}
+                onChange={handleChange}
+            />
+
         </div >
     )
 })

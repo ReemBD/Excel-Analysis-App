@@ -3,20 +3,48 @@
     background-color: $clr1;
     position: fixed;
     width: 100%;
+
+    .app-header {
+        height: 80px;
+    }
+
     .logo {
         font-size: 2.5em;
         text-transform: uppercase;
     }
-    .nav-link {
-        text-decoration: none;
-        font-size: 1em;
-        text-transform: uppercase;
-        color: $clr2;
 
-        &:not(:last-child) {
-            margin-inline-end: 20px;
+    .main-nav {
+        height: 100%;
+        li {
+            height: 100%;
+
+            &:not(:last-child) {
+                margin-inline-end: 10px;
+            }
         }
     }
+
+    .nav-link {
+        color: $clr2;
+        font-size: 1em;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        height: 100%;
+        width: 80px;
+        border-bottom: 6px solid transparent;
+
+        @include flex-column-centered;
+
+        &:hover {
+            color: $clr3;
+        }
+        &.selected-link {
+            border-bottom: 6px solid $clr3;
+            color: $clr3;
+        }
+    }
+
     & + * {
         padding-top: 100px;
     }

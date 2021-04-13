@@ -1,17 +1,25 @@
 import React from 'react'
-import { utilService } from 'services/utilService'
-
-export const DataFilter = ({ excels, filterBy, handleChange }) => {
+import { excelDataService } from 'services/excelDataService'
+import { ColSelect } from 'cmps/shared/ColSelect'
+export const DataFilter = ({ filterBy, handleChange }) => {
 
     return (
         <section className="data-filter flex items-center justify-between data-grid-layout">
-            <input type="text" className="search-input" name="txt" value={filterBy.txt} onChange={handleChange} placeholder="Search..." />
 
-            <select className="col-filter" id="colSearch" name="column" value={filterBy.column} onChange={handleChange} >
-                <option value="">All</option>
-                {utilService.extractColumns(excels).map(colName => <option key={colName} value={colName}>{colName}</option>)}
-            </select>
+            <input
+                type="text"
+                className="search-input"
+                name="txt"
+                value={filterBy.txt}
+                onChange={handleChange}
+                placeholder="Search..."
+            />
 
+            <ColSelect
+                value={filterBy.column}
+                name="column"
+                onChange={handleChange}
+            />
         </section>
     )
 }

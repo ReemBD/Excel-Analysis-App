@@ -2,16 +2,39 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const _AppHeader = () => {
+
     return (
-        <header className="app-header-container p-3" >
+        <header className="app-header-container " >
             <div
-                className="flex justify-between items-center main-layout">
+                className="app-header flex justify-between items-center main-layout">
                 <div className="logo fg-2">Mamush</div>
-                <nav className="main-nav fg-3">
-                    <NavLink to="/" className="nav-link">Home</NavLink>
-                    <NavLink to="/table" className="nav-link">Tables</NavLink>
-                    <NavLink to="/data" className="nav-link">Data</NavLink>
-                </nav>
+                <ul className="main-nav list-none flex fg-3">
+                    <li>
+                        <NavLink
+                            to="/"
+                            className="nav-link"
+                            /* activeClassName="selected-link" */>
+                            Home
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/table"
+                            className="nav-link"
+                            activeClassName="selected-link">
+                            Tables
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink
+                            to="/data"
+                            className="nav-link"
+                            activeClassName="selected-link"
+                        >
+                            Data
+                        </NavLink>
+                    </li>
+                </ul>
             </div>
         </header>
     )

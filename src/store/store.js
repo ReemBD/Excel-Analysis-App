@@ -27,7 +27,6 @@ const store = createContext(initialStateCombined);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
-    console.log({ rootReducer, initialStateCombined });
     const [state, dispatch] = useReducer(rootReducer, initialStateCombined)
     return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };

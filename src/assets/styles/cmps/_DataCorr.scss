@@ -1,6 +1,6 @@
 .data-corr {
     .data-corr-modal {
-        background-color: grey;
+        background-color: rgb(228, 225, 225);
         color: #212121;
 
         border-radius: 20px 20px 0 0;
@@ -12,10 +12,27 @@
         left: 10%;
         right: 10%;
 
+        transition: bottom 0.3s;
+
         &.open {
             bottom: 0;
         }
+        .title {
+            border-bottom: 1px solid $clr1;
+            color: #474747;
 
-        transition: bottom 0.3s;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        input.txt {
+            background-color: rgba(255, 255, 255, 0.671);
+            padding: 10px 5px;
+        }
+    }
+    .btn-open-data-corr {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background-color: #ffdccd;
     }
 }

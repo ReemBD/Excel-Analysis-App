@@ -7,9 +7,11 @@ export default ({ onClick, icon: Icon, className, ...restOfProps }) => {
         border: 'none',
         color: 'inherit'
     }
-
     return (
-        <button onClick={onClick} style={btnClearStyle} >
+        <button
+            onClick={onClick}
+            style={btnClearStyle}
+        >
             <Icon
                 {...restOfProps}
                 className={`btn-action ${className}`}

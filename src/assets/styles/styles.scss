@@ -8,13 +8,16 @@
 
 //CMPS
 @import "./cmps/AppHeader";
+
+//MyExcels cmps
 @import "./cmps/ExcelList";
 @import "./cmps/ExcelPreview";
 @import "./cmps/ExcelAdd";
 @import "./cmps/SheetPreview";
+
+//Data cmps
 @import "./cmps/Data";
 @import "./cmps/DataFilter";
 @import "./cmps/DefaultActionsPopover";
 @import "./cmps/shared/BtnAction";
 @import "./cmps/DataCorr";
-@import "./cmps/DataCorrModal";
