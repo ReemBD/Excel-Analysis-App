@@ -1,21 +1,23 @@
 .data-corr {
-    .data-corr-modal {
+    &-modal {
         background-color: rgb(228, 225, 225);
         color: #212121;
 
         border-radius: 20px 20px 0 0;
-        height: calc(100vh - 100px);
-        padding: 20px;
+
+        height: 0;
+        overflow: hidden;
 
         position: absolute;
         bottom: -100%;
         left: 10%;
         right: 10%;
 
-        transition: bottom 0.3s;
+        transition: height 0.7s;
+        bottom: 0;
 
         &.open {
-            bottom: 0;
+            height: calc(100vh - 100px);
         }
         .title {
             border-bottom: 1px solid $clr1;

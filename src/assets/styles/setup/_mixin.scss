@@ -1,3 +1,5 @@
+@import "./variables";
+
 @mixin hover-bgc-transition {
     &:hover {
         color: #fff;
@@ -45,4 +47,9 @@
     flex-direction: column;
     justify-content: center;
     // align-items: center;
+}
+
+@mixin border-bottom {
+    background: $gradient1;
+    background-size: 100% 2px;
 }

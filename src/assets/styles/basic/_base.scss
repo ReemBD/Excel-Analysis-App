@@ -28,9 +28,46 @@ img {
 .default {
     &-input {
         border: none;
-        border-bottom: 1px solid $clr3;
+        // border-bottom: 1px solid $clr3;
         outline: none;
-
-        background-color: inherit;
+        padding: 10px;
+        // background-color: inherit;
+        background: $gradient1;
+        @include border-bottom;
     }
+
+    &-select {
+        width: 300px;
+        border: none;
+        outline: none;
+        // border-bottom: 1px solid $clr4;
+        cursor: pointer;
+        padding: 10px;
+        // background-color: inherit;
+        @include border-bottom;
+        // background: $gradient1;
+
+        &:focus {
+            background-color: $clr1;
+        }
+    }
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(190, 190, 190);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    // background: #888;
+    background: $gradient1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

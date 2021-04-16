@@ -7,7 +7,8 @@ export const utilService = {
     loadFromStorage,
     getRandomInt,
     getRandomId,
-    extractColumns
+    extractColumns,
+    onScrollEnd
 }
 
 function storeToStorage(key, value) {
@@ -48,4 +49,10 @@ function extractColumns(excels) {
     })
 
     return Array.from(colSet)
+}
+
+function onScrollEnd({ target: { scrollTop, offsetHeight, scrollHeight } }, callback) {
+    if (scrollTop + offsetHeight >= scrollHeight) {
+        callback()
+    }
 }

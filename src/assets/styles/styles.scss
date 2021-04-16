@@ -1,10 +1,10 @@
+//SETUP
+@import "./setup/mixin";
+
 //BASE
 @import "./basic/base";
 @import "./basic/layouts";
 @import "./basic/helpers";
-
-//SETUP
-@import "./setup/mixin";
 
 //CMPS
 @import "./cmps/AppHeader";

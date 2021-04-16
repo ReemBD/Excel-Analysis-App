@@ -10,6 +10,7 @@
                 transition: background-color 0.1s;
                 width: 100%;
                 @include hover-bgc-transition;
+
                 .text {
                     flex-basis: 90%;
                 }

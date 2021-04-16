@@ -31,7 +31,7 @@ function query() {
     return excels
 }
 
-function getFilteredCells({ column, txt }, sliceIdx = 0) {
+function getFilteredCells({ column, txt, colToSearchFrom }, sliceIdx = 0) {
     const regex = new RegExp(txt)
     const { cellsByColMap, currSlice } = state
 
