@@ -18,7 +18,7 @@ export const DataCorrSearch = ({ search, handleChange }) => {
             />
 
             <ColSelect
-                name="colToSearchBy"
+                name="colToSearchFrom"
                 value={colToSearchFrom}
                 onChange={handleChange}
             />
