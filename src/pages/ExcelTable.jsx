@@ -12,10 +12,12 @@ export const ExcelTable = ({ match }) => {
 
     if (!table) return <h1>Loading...</h1>
 
-    const tableToRender = () => {
-        const { excelRows: rows } = table
-        const headerRow = Object.keys(rows[0])
-        return <table className="main-layout">
+    const { excelRows: rows } = table
+    const headerRow = Object.keys(rows[0])
+    return (
+        <div className="excel-table">
+            {/* {tableToRender()} */}
+            <table className="main-layout">
             <tr className="table-head">
                 {headerRow.map(cellTitle => <th key={cellTitle}>{cellTitle}</th>)}
             </tr>
@@ -26,11 +28,6 @@ export const ExcelTable = ({ match }) => {
                 </tr>
             })}
         </table>
-    }
-
-    return (
-        <div className="excel-table">
-            {tableToRender()}
         </div>
     )
 }

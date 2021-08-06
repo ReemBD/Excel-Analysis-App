@@ -8,15 +8,19 @@ import { DataCorrModal } from 'cmps/Data/DataCorrModal/DataCorrModal';
 import BtnOpenCorr from 'cmps/Data/BtnAction';
 import { BsClipboardData } from 'react-icons/bs'
 import { useFilteredRes } from 'hooks/useFilteredRes'
+import { MainOverlay } from 'cmps/shared/MainOverlay';
+
 
 export const Data = () => {
 
-    const { state, dispatch } = useContext(store)
-    const { excels } = state.excelReducer
     const [filterBy, setFilterBy] = useState({ column: '', txt: '' })
     const [filteredRes, setFilteredRes] = useFilteredRes(filterBy)
     const [resSliceIdx, setSliceIdx] = useState(0)
     const [isDataCorrOpen, toggleDataCorr, ref] = useTogglePopover()
+
+    const { state, dispatch } = useContext(store)
+    const { excels } = state.excelReducer
+    const isOverlayOpen = state.overlayReducer.isOpen
 
 
     const onScrollEnd = useCallback(({ target: { scrollTop, offsetHeight, scrollHeight } }) => {
@@ -31,13 +35,10 @@ export const Data = () => {
             excelsToSet = [...excelDataService.query()]
             dispatch({ type: 'SET_EXCELS', excels: excelsToSet })
         }
+        console.log({ excelsToSet });
         excelDataService.createCellsByColMap(excelsToSet)
+        setFilteredRes(excelDataService.getFilteredCells(filterBy, resSliceIdx))
     }, [])
-
-    // useEffect(() => {
-    //     const filteredResToSet = excelDataService.getFilteredCells(filterBy)
-    //     setFilteredRes(filteredResToSet)
-    // }, [filterBy])
 
     useEffect(() => {
         if (!resSliceIdx) return
@@ -56,6 +57,7 @@ export const Data = () => {
 
     return (
         <div className="data-page main-layout grid content-center justify-items-center">
+            {isOverlayOpen && <MainOverlay isOpen={isOverlayOpen} />}
 
             <DataFilter
                 filterBy={filterBy}

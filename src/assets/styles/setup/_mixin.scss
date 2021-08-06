@@ -30,14 +30,12 @@
     }
 }
 
-@mixin popover-header {
+@mixin header {
     text-align: center;
-    font-family: "Open Sans Bold";
     border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     margin-bottom: 5px;
-    font-size: 0.8em;
 }
 
 /* FLEX */
@@ -52,4 +50,11 @@
 @mixin border-bottom {
     background: $gradient1;
     background-size: 100% 2px;
+}
+
+@mixin btn-clear {
+    &:focus {
+        outline: none !important;
+        border: none !important;
+    }
 }

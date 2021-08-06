@@ -12,15 +12,22 @@
 import React, { createContext, useReducer } from 'react';
 import combineReducers from 'react-combine-reducers';
 import { excelReducer } from 'store/reducers/excelReducer'
+import { overlayReducer } from './reducers/overlayReducer';
 
 const initialState = {
     excelReducer: {
         excels: null
+    },
+    overlayReducer: {
+        isOpen: false
     }
 }
 
 const [rootReducer, initialStateCombined] = combineReducers(
-    { excelReducer: [excelReducer, initialState.excelReducer] }
+    {
+        excelReducer: [excelReducer, initialState.excelReducer],
+        overlayReducer: [overlayReducer, initialState.overlayReducer]
+    }
 );
 
 const store = createContext(initialStateCombined);

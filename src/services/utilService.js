@@ -8,17 +8,19 @@ export const utilService = {
     getRandomInt,
     getRandomId,
     extractColumns,
-    onScrollEnd
+    onScrollEnd,
+    convertToPx,
+    getIsOverflowY
 }
 
 function storeToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value) || null);
 }
+
 function loadFromStorage(key) {
     let data = localStorage.getItem(key);
     return (data) ? JSON.parse(data) : undefined;
 }
-
 
 function getRandomId() {
     var pt1 = Date.now().toString(16);
@@ -55,4 +57,13 @@ function onScrollEnd({ target: { scrollTop, offsetHeight, scrollHeight } }, call
     if (scrollTop + offsetHeight >= scrollHeight) {
         callback()
     }
+}
+
+function convertToPx(num) {
+    return num + 'px'
+}
+
+function getIsOverflowY(height, { clientY }) {
+    const diff = height + clientY - document.documentElement.clientHeight
+    return diff > 0 ? diff : false
 }

@@ -5,8 +5,10 @@ export default ({ onClick, icon: Icon, className, ...restOfProps }) => {
     const btnClearStyle = {
         backgroundColor: 'transparent',
         border: 'none',
+        outline: 'none',
         color: 'inherit'
     }
+
     return (
         <button
             onClick={onClick}

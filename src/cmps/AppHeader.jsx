@@ -12,8 +12,9 @@ const _AppHeader = () => {
                     <li>
                         <NavLink
                             to="/"
+                            exact
                             className="nav-link"
-                            /* activeClassName="selected-link" */>
+                            activeClassName="selected-link">
                             Home
                         </NavLink>
                     </li>

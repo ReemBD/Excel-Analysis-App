@@ -22,12 +22,14 @@ export const DataCorrSearch = ({ search, handleChange }) => {
                 value={colToSearchFrom}
                 onChange={handleChange}
             />
-
+            <label htmlFor="column">
+                Choose Column to correlate:
             <ColSelect
-                name="column"
-                value={column}
-                onChange={handleChange}
-            />
+                    name="column"
+                    value={column}
+                    onChange={handleChange}
+                />
+            </label>
 
         </div>
     )

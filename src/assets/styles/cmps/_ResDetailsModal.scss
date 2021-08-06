@@ -1,0 +1,33 @@
+@import "../setup/variables";
+
+.res-details-modal {
+    background-color: #fff;
+    overflow: auto;
+    // padding: 10px;
+    position: absolute;
+
+    height: 500px;
+    width: 1000px;
+
+    z-index: $modalZ;
+
+    animation-name: scaleWidth;
+    animation-duration: 0.5s;
+
+    transform: translateX(-102%);
+
+    &-header {
+        @include header;
+    }
+}
+
+@keyframes scaleWidth {
+    from {
+        width: 0;
+        height: 0;
+    }
+    to {
+        width: 1000px;
+        height: 500px;
+    }
+}
